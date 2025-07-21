@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação: O Papel Estratégico do KAM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #007bff; /* Azul vibrante */
+            --secondary-color: #6c757d; /* Cinza neutro */
+            --accent-color: #28a745; /* Verde para destaque */
+            --background-light: #f8f9fa; /* Fundo muito claro */
+            --background-dark: #e9ecef; /* Fundo um pouco mais escuro */
+            --text-dark: #343a40; /* Texto escuro */
+            --text-light: #ffffff; /* Texto claro */
+            --border-color: #dee2e6; /* Cor da borda */
+            --highlight-bg: #e0f7fa; /* Fundo para destaque leve */
+            --arrow-color: #0056b3; /* Cor das setas */
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .slide-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        .slide {
+            background-color: var(--text-light);
+            margin: 30px auto;
+            padding: 50px 70px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+            box-sizing: border-box;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .slide:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .slide h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-color);
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-align: center;
+            width: 100%;
+            font-weight: 700;
+        }
+
+        .slide h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-color);
+            font-size: 2.2em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--border-color);
+            padding-bottom: 15px;
+            width: 100%;
+            font-weight: 600;
+        }
+
+        .slide h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary-color);
+            font-size: 1.6em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .slide ul {
+            list-style-type: none;
+            margin-left: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        .slide ul li {
+            margin-bottom: 12px;
+            font-size: 1.15em;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .slide ul li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-size: 1.2em;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .slide ul li strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .slide ol {
+            list-style-type: decimal;
+            margin-left: 25px;
+            padding: 0;
+            width: 100%;
+        }
+
+        .slide ol li {
+            margin-bottom: 10px;
+            font-size: 1.15em;
+        }
+
+        .slide p {
+            font-size: 1.15em;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        /* Estilos específicos para o slide de título */
+        .slide.title-slide {
+            background: linear-gradient(135deg, var(--primary-color), #0056b3);
+            color: var(--text-light);
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+        }
+
+        .slide.title-slide h1 {
+            color: var(--text-light);
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .slide.title-slide h2 {
+            color: var(--text-light);
+            font-size: 2.5em;
+            border-bottom: none;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilos para o slide de Q&A */
+        .slide.qa-slide {
+            background-color: var(--background-dark);
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide.qa-slide h1 {
+            color: var(--primary-color);
+            font-size: 3.5em;
+            margin-bottom: 30px;
+        }
+
+        .slide.qa-slide p {
+            font-size: 1.8em;
+            color: var(--secondary-color);
+        }
+
+        /* Botões de navegação */
+        .nav-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-button {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .nav-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .nav-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Novos elementos visuais */
+        .highlight-box {
+            background-color: var(--highlight-bg);
+            border-left: 5px solid var(--primary-color);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-size: 1.1em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        .process-step {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px 25px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-align: center;
+            width: 70%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 20px solid var(--arrow-color);
+            margin-bottom: 15px;
+        }
+
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 200px;
+            width: 90%;
+            margin: 30px auto;
+            border-bottom: 2px solid var(--border-color);
+            border-left: 2px solid var(--border-color);
+            padding-left: 10px;
+        }
+
+        .chart-bar {
+            width: 15%;
+            background-color: var(--primary-color);
+            margin: 0 5%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.9em;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            transition: height 0.5s ease-out;
+        }
+
+        .chart-bar span {
+            position: absolute;
+            top: -25px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        .chart-bar.bar1 { height: 80%; background-color: #007bff; }
+        .chart-bar.bar2 { height: 70%; background-color: #28a745; }
+        .chart-bar.bar3 { height: 90%; background-color: #ffc107; }
+
+        .icon-list li {
+            display: flex;
+            align-items: center;
+            padding-left: 0;
+        }
+        .icon-list li i {
+            margin-right: 10px;
+            color: var(--primary-color);
+            font-size: 1.3em;
+        }
+        .icon-list li::before {
+            content: none;
+        }
+
+        /* Estilo para slides de fonte */
+        .source-slide {
+            background-color: var(--background-dark);
+            padding: 40px 60px;
+            text-align: left;
+        }
+        .source-slide h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .source-slide ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        .source-slide ul li {
+            font-size: 1em;
+            margin-bottom: 8px;
+            padding-left: 0;
+        }
+        .source-slide ul li::before {
+            content: none;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 30px 40px;
+                margin: 20px auto;
+                min-height: auto;
+            }
+            .slide h1 {
+                font-size: 2.2em;
+            }
+            .slide h2 {
+                font-size: 1.6em;
+            }
+            .slide h3 {
+                font-size: 1.3em;
+            }
+            .slide ul li, .slide p, .slide ol li {
+                font-size: 1em;
+            }
+            .slide.title-slide h1 {
+                font-size: 3em;
+            }
+            .slide.title-slide h2 {
+                font-size: 1.8em;
+            }
+            .slide.qa-slide h1 {
+                font-size: 2.5em;
+            }
+            .slide.qa-slide p {
+                font-size: 1.3em;
+            }
+            .nav-buttons {
+                flex-direction: column;
+                bottom: 20px;
+                right: 20px;
+                gap: 10px;
+            }
+            .nav-button {
+                padding: 12px 20px;
+                font-size: 1em;
+            }
+            .process-step {
+                width: 90%;
+            }
+            .chart-container {
+                height: 150px;
+            }
+            .chart-bar span {
+                font-size: 0.8em;
+                top: -20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-container">
+        <div class="slide title-slide" id="slide1">
+            <h1>A Experiência do Cliente no Mundo B2B: O Papel Estratégico do Key Account Manager (KAM)</h1>
+            <h2>Uma Análise Aprofundada da Orquestração de Recursos e Relacionamentos para uma Experiência Superior.</h2>
+        </div>
+
+        <div class="slide" id="slide2">
+            <h2><i class="fas fa-chart-line"></i> O Problema - A Era da Experiência do Cliente no Mundo B2B</h2>
+            <h3>A Nova Fronteira Competitiva: A Experiência do Cliente (CX)</h3>
+            <div class="highlight-box">
+                <p>A competição no mercado B2B não se baseia mais apenas em produto ou preço. A principal arena de diferenciação hoje é a qualidade da experiência oferecida ao cliente durante toda a sua jornada.</p>
+            </div>
+            <h3>Dados de Impacto</h3>
+            <div class="chart-container">
+                <div class="chart-bar bar1" style="height: 88%;"><span>88%</span></div>
+                <div class="chart-bar bar2" style="height: 70%;"><span>80%+</span></div>
+            </div>
+            <ul class="icon-list">
+                <li><i class="fas fa-handshake"></i> <strong>88%</strong> dos compradores B2B consideram a experiência de compra tão importante quanto os produtos/serviços adquiridos.</li>
+                <li><i class="fas fa-building"></i> Mais de **80%** das empresas B2B preveem que sua principal base de competição será a experiência do cliente.</li>
+            </ul>
+            <h3>Conexão com Gestão de Operações</h3>
+            <ul>
+                <li>Este cenário redefine o conceito de Qualidade em Serviços. A qualidade deixa de ser um atributo técnico e passa a ser a percepção do cliente, formada por cada interação (touchpoint).</li>
+                <li>O foco da gestão de operações se expande: não basta apenas entregar um resultado, é preciso gerenciar ativamente a jornada do cliente para garantir sua satisfação e lealdade.</li>
+            </ul>
+            <h3>A Questão Central do Artigo</h3>
+            <div class="highlight-box">
+                <p>Diante deste cenário, como as empresas podem orquestrar seus recursos e relacionamentos para entregar uma experiência superior em suas contas mais estratégicas?</p>
+            </div>
+        </div>
+
+        <div class="slide source-slide" id="slide2-sources">
+            <h2>Fontes do Slide "O Problema"</h2>
+            <ul>
+                <li>**Fonte: Artigo (p. 118, "Introduction"):** As estatísticas de 88% e 80% e a contextualização da experiência do cliente como o principal fator competitivo em B2B.</li>
+                <li>**Fonte: Slides da Disciplina (Aula 4, "Qualidade em Serviços" e Aula 1a, "Experiência e Resultado"):** A conceituação de qualidade como a percepção do cliente e a importância da jornada e dos pontos de contato (touchpoints) na formação da satisfação.</li>
+                <li>**Outras Fontes (Elaboração e Síntese):** A organização dos tópicos e a formulação da "Questão Central do Artigo" como uma ponte para o próximo slide.</li>
+            </ul>
+        </div>
+
+        <div class="slide" id="slide3">
+            <h2><i class="fas fa-user-tie"></i> A Peça-Chave - Quem é e o que faz o Key Account Manager (KAM)?</h2>
+            <h3>Definindo o KAM: Mais que um Vendedor, um Estrategista</h3>
+            <div class="highlight-box">
+                <p>O Key Account Manager (KAM) não é um vendedor tradicional focado em transações. Ele é um gestor de relacionamento dedicado às contas mais valiosas e estratégicas da empresa (as "contas-chave").</p>
+            </div>
+            <ul>
+                <li>Sua função principal é cultivar, manter e expandir parcerias de longo prazo, garantindo o sucesso mútuo.</li>
+            </ul>
+            <h3>O Papel Central do KAM: Orquestrador de Ecossistemas</h3>
+            <p>O artigo define o KAM como um "orquestrador de recursos". Sua principal tarefa é navegar e alinhar um ecossistema complexo que inclui:</p>
+            <ul class="icon-list">
+                <li><i class="fas fa-users-cog"></i> <strong>Atores Internos:</strong> Diferentes departamentos da sua própria empresa (engenharia, logística, financeiro, etc.).</li>
+                <li><i class="fas fa-handshake-alt-slash"></i> <strong>Atores Externos:</strong> Múltiplos contatos dentro da organização do cliente, além de fornecedores e outros parceiros.</li>
+            </ul>
+            <h3>Conexão com Gestão de Operações</h3>
+            <div class="process-flow">
+                <div class="process-step">Relacionamento "Gravata-Borboleta" (Frágil)</div>
+                <div class="arrow-down"></div>
+                <div class="process-step">Relacionamento "Diamante" (Robusto e Integrado)</div>
+            </div>
+            <ul>
+                <li>Essa estrutura cria uma relação mais robusta e integrada, onde a colaboração interfuncional é a chave para o sucesso, um princípio fundamental da gestão de operações de serviços.</li>
+            </ul>
+            <h3>Objetivo Final do KAM</h3>
+            <div class="highlight-box">
+                <p>Garantir que a experiência do cliente seja coesa, positiva e alinhada aos objetivos estratégicos de ambas as empresas, transformando a relação de fornecedor-cliente em uma verdadeira parceria.</p>
+            </div>
+        </div>
+
+        <div class="slide source-slide" id="slide3-sources">
+            <h2>Fontes do Slide "A Peça-Chave"</h2>
+            <ul>
+                <li>**Fonte: Artigo (p. 118, "Introduction" e p. 119, "Key account management"):** A definição do KAM como um "orquestrador de recursos" e sua responsabilidade por organizar a experiência do cliente. A descrição de que ele navega em ecossistemas complexos de atores internos e externos.</li>
+                <li>**Fonte: Slides da Disciplina (Aula 3, "Gestão de contas-chave"):** O conceito dos relacionamentos "Gravata-Borboleta" e "Diamante" para ilustrar a complexidade e a profundidade da interação gerenciada pelo KAM.</li>
+                <li>**Outras Fontes (Elaboração e Síntese):** A organização dos tópicos e a frase "Mais que um Vendedor, um Estrategista" para criar um título de impacto e resumir a essência do papel do KAM.</li>
+            </ul>
+        </div>
+
+        <div class="slide" id="slide4">
+            <h2><i class="fas fa-cogs"></i> A Lente Teórica - Ecossistema de Serviços e "Pontos de Cruzamento"</h2>
+            <h3>O Modelo Teórico: Perspectiva do Ecossistema de Serviços</h3>
+            <ul>
+                <li>Para analisar o trabalho do KAM, o artigo utiliza a "Perspectiva do Ecossistema de Serviços".</li>
+                <li>Essa visão vai além da relação diádica (empresa-cliente) e enxerga a prestação de serviços como uma rede dinâmica de múltiplos atores (internos e externos) que trocam recursos e cocriam valor.</li>
+            </ul>
+            <h3>Introduzindo o Conceito-Chave: Pontos de Cruzamento (Crossing Points)</h3>
+            <div class="highlight-box">
+                <p>Dentro desse ecossistema, as interações ocorrem em "Pontos de Cruzamento". Este é o conceito mais importante do artigo.</p>
+            </div>
+            <ul>
+                <li><strong>Definição:</strong> É o "local" onde um serviço ou valor é trocado entre dois atores. É uma evolução do conceito de "touchpoint", pois foca na **qualidade** e **eficiência** da troca.</li>
+            </ul>
+            <h3>A Missão do KAM: "Afinar" os Pontos de Cruzamento</h3>
+            <div class="process-flow">
+                <div class="process-step" style="background-color: var(--accent-color);">Pontos Finos (Thin): Eficientes, Fáceis, Sem Atrito <i class="fas fa-check-circle"></i></div>
+                <div class="arrow-down" style="border-top-color: var(--accent-color);"></div>
+                <div class="process-step" style="background-color: #dc3545;">Pontos Grossos (Thick): Complexos, Burocráticos, Com Obstáculos <i class="fas fa-times-circle"></i></div>
+            </div>
+            <ul>
+                <li>O objetivo principal do KAM é gerenciar ativamente essas interações para torná-las o mais "finas" (thin) possível.</li>
+            </ul>
+            <h3>Conexão com Gestão de Operações</h3>
+            <ul class="icon-list">
+                <li><i class="fas fa-project-diagram"></i> Este conceito se conecta diretamente com o Mapeamento de Processos de Serviços. "Afinar um ponto de cruzamento" é análogo a otimizar uma etapa do processo, eliminando gargalos, simplificando atividades e melhorando a visibilidade.</li>
+                <li><i class="fas fa-hourglass-half"></i> Também se relaciona com a Gestão de Filas e Gargalos, onde o objetivo é garantir que os recursos atendam à demanda de forma fluida e eficiente.</li>
+            </ul>
+        </div>
+
+        <div class="slide source-slide" id="slide4-sources">
+            <h2>Fontes do Slide "A Lente Teórica"</h2>
+            <ul>
+                <li>**Fonte: Artigo (p. 121, "Service Ecosystem Perspective including crossing points"):** A definição da perspectiva do ecossistema de serviços, a introdução do conceito de "crossing points" (pontos de cruzamento) e a distinção entre "thin" (finos) e "thick" (grossos). A missão do KAM de "afinar" esses pontos.</li>
+                <li>**Fonte: Slides da Disciplina (Aula 6, "Mapeando e ferramentas de mapeamento" e Aula 1, "Gestão de Gargalos" e "Gestão de Filas"):** A analogia entre "afinar pontos de cruzamento" e as práticas de otimização de processos, como identificar e eliminar gargalos, simplificar fluxos e gerenciar filas para melhorar a eficiência operacional e a experiência do cliente.</li>
+                <li>**Outras Fontes (Elaboração e Síntese):** A organização dos tópicos e a tradução dos termos "thin/thick" para uma linguagem mais didática ("sem atrito" vs. "com obstáculos") para facilitar a compreensão na apresentação.</li>
+            </ul>
+        </div>
+
+        <div class="slide" id="slide5">
+            <h2><i class="fas fa-sitemap"></i> O Coração do Artigo - Como os KAMs Constroem a Experiência do Cliente?</h2>
+            <h3>Uma Abordagem Estruturada: O Processo de 3 Níveis</h3>
+            <div class="highlight-box">
+                <p>O artigo revela que os KAMs não agem de forma aleatória. Eles constroem a experiência do cliente seguindo um processo sequencial e deliberado, que "afina os pontos de cruzamento" em três níveis distintos, do mais amplo para o mais específico.</p>
+            </div>
+            <div class="process-flow">
+                <div class="process-step" style="background-color: #0056b3;">Nível 1: A Firma (Organizacional) <i class="fas fa-building"></i></div>
+                <div class="arrow-down"></div>
+                <div class="process-step" style="background-color: #0056b3;">Nível 2: O Indivíduo (Pessoal) <i class="fas fa-user"></i></div>
+                <div class="arrow-down"></div>
+                <div class="process-step" style="background-color: #0056b3;">Nível 3: O Processo (Automação) <i class="fas fa-robot"></i></div>
+            </div>
+            <h3>Nível 1: A Base de Tudo - A Firma (Nível Organizacional)</h3>
+            <ul>
+                <li><strong>Objetivo:</strong> Criar uma base sólida de confiança na organização como um todo.</li>
+            </ul>
+            <h3>Nível 2: A Conexão Humana - O Indivíduo (Nível Pessoal)</h3>
+            <ul>
+                <li><strong>Relacionamento Cognitivo:</strong> Baseado na demonstração de competência.</li>
+                <li><strong>Relacionamento Afetivo:</strong> Baseado na criação de empatia.</li>
+                <li><strong>Ponto-chave:</strong> O KAM deve adaptar seu estilo (cognitivo, afetivo ou ambos) à preferência do cliente.</li>
+            </ul>
+            <h3>Nível 3: A Eficiência Operacional - O Processo (Nível de Automação)</h3>
+            <ul>
+                <li><strong>Objetivo:</strong> Tornar a operação diária mais fluida e eficiente, liberando tempo para focar em atividades estratégicas.</li>
+            </ul>
+        </div>
+
+        <div class="slide source-slide" id="slide5-sources">
+            <h2>Fontes do Slide "O Coração do Artigo"</h2>
+            <ul>
+                <li>**Fonte: Artigo (p. 123, "Creating a customer experience by thinning crossing points..."):** Esta seção inteira detalha o processo de 3 níveis. A distinção entre o nível da firma (legitimidade), o nível individual (relacionamentos cognitivo e afetivo) e o nível de automação é a principal descoberta apresentada no artigo.</li>
+                <li>**Fonte: Slides da Disciplina (Aula 1, "Gestão da Capacidade em Serviços" e Aula 6, "Processo x 4 características Serviços IHIP"):** A conexão com as estratégias de gestão de capacidade, que buscam o equilíbrio entre qualidade, custos e utilização de recursos. O processo do KAM ilustra como lidar com as características dos serviços (heterogeneidade, inseparabilidade) através de uma abordagem estruturada que combina padronização e personalização.</li>
+                <li>**Outras Fontes (Elaboração e Síntese):** A organização em uma estrutura de "3 Níveis" e o uso de títulos como "A Base de Tudo", "A Conexão Humana" e "A Eficiência Operacional" para tornar o conteúdo mais didático e fácil de memorizar durante a apresentação.</li>
+            </ul>
+        </div>
+
+        <div class="slide" id="slide6">
+            <h2><i class="fas fa-hands-helping"></i> Os Pilares de Sustentação - O Papel dos Facilitadores</h2>
+            <h3>O KAM Não Atua Sozinho: A Necessidade de Suporte</h3>
+            <div class="highlight-box">
+                <p>Para "afinar os pontos de cruzamento" e manter a experiência do cliente fluida, os KAMs dependem criticamente de dois pilares: o ecossistema de atores e a tecnologia.</p>
+            </div>
+            <div style="display: flex; justify-content: space-around; width: 100%; margin-top: 30px;">
+                <div style="flex: 1; margin-right: 20px;">
+                    <h3><i class="fas fa-users"></i> Pilar 1: O Ecossistema de Atores (Pessoas)</h3>
+                    <ul class="icon-list">
+                        <li><i class="fas fa-share-alt"></i> <strong>Colaboração Interna:</strong> KAM mobiliza equipe interna (integrador de conhecimento).</li>
+                        <li><i class="fas fa-user-friends"></i> <strong>Colaboração com o Cliente:</strong> Interação entre equipes, criando um "time estendido".</li>
+                        <li><i class="fas fa-certificate"></i> <strong>Validação por Terceiros:</strong> Uso de parceiros/consultores para validar a experiência.</li>
+                    </ul>
+                </div>
+                <div style="flex: 1;">
+                    <h3><i class="fas fa-laptop-code"></i> Pilar 2: A Tecnologia como Ferramenta Estratégica</h3>
+                    <ul class="icon-list">
+                        <li><i class="fas fa-star"></i> <strong>Manutenção da Reputação:</strong> Redes sociais e plataformas digitais.</li>
+                        <li><i class="fas fa-comments"></i> <strong>Otimização da Comunicação:</strong> Ferramentas de videoconferência.</li>
+                        <li><i class="fas fa-robot"></i> <strong>Eficiência Operacional:</strong> Sistemas compartilhados (CRMs, portais).</li>
+                    </ul>
+                </div>
+            </div>
+            <h3>Conexão com Gestão de Operações</h3>
+            <ul class="icon-list">
+                <li><i class="fas fa-people-carry"></i> O pilar do "Ecossistema de Atores" está ligado à Gestão de Pessoas e Cultura em Serviços.</li>
+                <li><i class="fas fa-digital-tachograph"></i> O pilar da "Tecnologia" reforça conceitos de Digitalização para automação e otimização.</li>
+            </ul>
+        </div>
+
+        <div class="slide source-slide" id="slide6-sources">
+            <h2>Fontes do Slide "Os Pilares de Sustentação"</h2>
+            <ul>
+                <li>**Fonte: Artigo (p. 124, "Maintaining customer experience with the help of facilitators to ease the thinning of crossing points"):** Esta seção descreve explicitamente o ecossistema de atores (internos, do cliente, terceiros) e o uso da tecnologia como os dois principais facilitadores que os KAMs utilizam. Os exemplos citados são baseados nas entrevistas descritas no artigo.</li>
+                <li>**Fonte: Slides da Disciplina (Aula de Gestão de Pessoas, slides 9 e 12; Aula 11, slides 4 e 7):** A conexão com a gestão de pessoas, cultura, trabalho em equipe e comunicação. A relação com a aula de digitalização, que aborda o uso da tecnologia para automatizar, conectar e otimizar a prestação de serviços.</li>
+                <li>**Outras Fontes (Elaboração e Síntese):** A organização da informação na estrutura de "Dois Pilares" e o uso de títulos como "O KAM Não Atua Sozinho" para criar uma narrativa clara e lógica para o slide.</li>
+            </ul>
+        </div>
+
+        <div class="slide" id="slide7">
+            <h2><i class="fas fa-exclamation-triangle"></i> Zonas de Risco - Quando a Experiência do Cliente Pode Falhar</h2>
+            <h3>O Equilíbrio é Frágil: Riscos na Gestão da Experiência</h3>
+            <div class="highlight-box" style="border-left-color: #dc3545;">
+                <p>O processo de "afinar os pontos de cruzamento" não é isento de riscos. Se mal gerenciado, pode levar à disrupção da experiência do cliente. Os principais riscos surgem de um desequilíbrio nos níveis de interação.</p>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-around; width: 100%; margin-top: 30px;">
+                <div style="flex-basis: 45%; margin-bottom: 20px; background-color: var(--background-dark); padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                    <h3><i class="fas fa-robot"></i> Risco 1: Pontos "Finos Demais" (Excesso de Automação)</h3>
+                    <p><strong>Consequência:</strong> Perda de contato humano, relacionamento frio e impessoal. Ex: KAM vira gestor de sistema.</p>
+                </div>
+                <div style="flex-basis: 45%; margin-bottom: 20px; background-color: var(--background-dark); padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                    <h3><i class="fas fa-heart"></i> Risco 2: Foco Apenas no Afetivo (Desbalanceado)</h3>
+                    <p><strong>Consequência:</strong> Relacionamento superficial, dependente da pessoa, não da empresa. Ex: Cliente não vê valor de negócio.</p>
+                </div>
+                <div style="flex-basis: 95%; background-color: var(--background-dark); padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                    <h3><i class="fas fa-building"></i> Risco 3: Falha Organizacional (Engrossam na Base)</h3>
+                    <p><strong>Consequência:</strong> Quebra de confiança fundamental, frustração. Ex: Empresa não entrega o prometido.</p>
+                </div>
+            </div>
+            <h3>Conexão com Gestão de Operações</h3>
+            <ul class="icon-list">
+                <li><i class="fas fa-balance-scale"></i> Esses riscos espelham o desafio central da Estratégia de Zona de Risco: encontrar o equilíbrio ideal entre eficiência e qualidade percebida.</li>
+            </ul>
+        </div>
+
+        <div class="slide source-slide" id="slide7-sources">
+            <h2>Fontes do Slide "Zonas de Risco"</h2>
+            <ul>
+                <li>**Fonte: Artigo (p. 125, "Risk of disrupting the customer experience"):** Esta seção é a fonte direta para todo o conteúdo. Ela detalha os riscos de pontos de cruzamento "finos demais" (automação), o perigo de focar apenas na relação afetiva e as consequências de falhas no nível da firma que "engrossam" os pontos de cruzamento. Os exemplos são extraídos diretamente das citações dos KAMs entrevistados.</li>
+                <li>**Fonte: Slides da Disciplina (Aula 1, "Estratégia de Zona de Risco", slides 24-27):** A conexão teórica fundamental. A "Zona de Risco" apresentada na aula, que mostra a relação inversa entre a utilização de recursos e a qualidade percebida pelo cliente, é o modelo perfeito para enquadrar e explicar os riscos operacionais e de relacionamento que o artigo descreve.</li>
+                <li>**Outras Fontes (Elaboração e Síntese):** A estruturação do conteúdo em "Risco 1, 2, 3" e o uso de títulos claros para cada risco, visando facilitar a didática e a organização lógica do slide.</li>
+            </ul>
+        </div>
+
+        <div class="slide" id="slide8">
+            <h2><i class="fas fa-link"></i> Conexões com a Disciplina e Implicações Práticas</h2>
+            <h3>Síntese: O Artigo como um Estudo de Caso para a Gestão de Operações</h3>
+            <div class="highlight-box">
+                <p>A pesquisa sobre o KAM funciona como uma aplicação prática e moderna dos princípios fundamentais da Gestão de Operações de Serviços. O KAM é o agente que coloca a teoria em prática.</p>
+            </div>
+            <h3>Principais Conexões com a Disciplina (Resumo)</h3>
+            <ul class="icon-list">
+                <li><i class="fas fa-users"></i> <strong>Cocriação de Valor:</strong> KAM alinha recursos e expectativas para valor construído em conjunto.</li>
+                <li><i class="fas fa-eye"></i> <strong>Gestão da Percepção e Qualidade:</strong> KAM gerencia cada "touchpoint" para alta qualidade e confiança.</li>
+                <li><i class="fas fa-network-wired"></i> <strong>Orquestração de Redes de Serviços:</strong> KAM gerencia fornecedores internos e externos para entrega coesa.</li>
+                <li><i class="fas fa-chart-pie"></i> <strong>Equilíbrio Operacional:</strong> KAM balanceia relacionamentos (customização) com automação (eficiência).</li>
+            </ul>
+            <h3>Implicações Práticas para Gestores de Operações</h3>
+            <ul class="icon-list">
+                <li><i class="fas fa-globe"></i> <strong>Visão Holística é Essencial:</strong> Entender o ecossistema completo e o impacto das áreas internas.</li>
+                <li><i class="fas fa-chalkboard-teacher"></i> <strong>Treinamento Interfuncional:</strong> Equipes treinadas em funções técnicas e no impacto no relacionamento.</li>
+                <li><i class="fas fa-lightbulb"></i> <strong>Tecnologia a Serviço da Estratégia:</strong> Digitalização e automação para "afinar" interações, sem eliminar contato humano.</li>
+                <li><i class="fas fa-map-marked-alt"></i> <strong>Mapear e Otimizar Interações:</strong> Identificar e eliminar atritos ("pontos grossos") nos processos de serviço.</li>
+            </ul>
+        </div>
+
+        <div class="slide source-slide" id="slide8-sources">
+            <h2>Fontes do Slide "Conexões e Implicações"</h2>
+            <ul>
+                <li>**Fonte: Artigo (p. 126-127, "Theoretical contributions" e "Managerial implications"):** Esta seção do artigo resume suas próprias contribuições teóricas e implicações gerenciais, que são a base para este slide. As ideias de visão holística, treinamento e uso estratégico da tecnologia são destacadas pelos autores.</li>
+                <li>**Fonte: Slides da Disciplina (Aulas 1a, 3, 4, 6, 11):** Este slide é uma síntese que revisita e conecta os principais conceitos abordados ao longo de toda a disciplina, como cocriação, qualidade percebida, redes de serviços, matriz volume-variedade, zona de risco e digitalização, mostrando como o artigo os exemplifica.</li>
+                <li>**Outras Fontes (Elaboração e Síntese):** A organização do conteúdo em "Síntese", "Principais Conexões" e "Implicações Práticas" para criar uma estrutura lógica e conclusiva. A frase "O Artigo como um Estudo de Caso" serve para enquadrar a relevância da apresentação para a audiência.</li>
+            </ul>
+        </div>
+
+        <div class="slide" id="slide9">
+            <h2><i class="fas fa-check-circle"></i> Conclusão</h2>
+            <h3>A Evolução do Gestor Estratégico</h3>
+            <div class="highlight-box">
+                <p>O Key Account Manager (KAM) transcende o papel de vendas para se tornar o arquiteto da experiência do cliente. Sua função é projetar e gerenciar uma jornada de valor, coesa e de longo prazo.</p>
+            </div>
+            <h3>A Chave é o Processo, Não Ações Isoladas</h3>
+            <div class="process-flow">
+                <div class="process-step" style="background-color: var(--accent-color);">1. Credibilidade da Empresa <i class="fas fa-award"></i></div>
+                <div class="arrow-down" style="border-top-color: var(--accent-color);"></div>
+                <div class="process-step" style="background-color: var(--accent-color);">2. Relacionamentos Pessoais <i class="fas fa-user-friends"></i></div>
+                <div class="arrow-down" style="border-top-color: var(--accent-color);"></div>
+                <div class="process-step" style="background-color: var(--accent-color);">3. Automação para Eficiência <i class="fas fa-cogs"></i></div>
+            </div>
+            <h3>A Gestão de Operações na Prática</h3>
+            <ul>
+                <li>Em essência, o trabalho do KAM é a aplicação direta dos princípios da Gestão de Operações: ele orquestra um ecossistema de pessoas e tecnologia para entregar um serviço de alta qualidade, navegando constantemente no equilíbrio entre customização, eficiência, custo e risco.</li>
+            </ul>
+            <h3>Mensagem Final</h3>
+            <div class="highlight-box" style="border-left-color: var(--accent-color);">
+                <p>Em um mercado onde a experiência é o diferencial, vencer não é sobre ter os melhores "pontos de contato", mas sobre ter os "pontos de cruzamento" mais fluidos e eficientes. É a qualidade das interações, e não apenas sua existência, que define o sucesso.</p>
+            </div>
+        </div>
+
+        <div class="slide source-slide" id="slide9-sources">
+            <h2>Fontes do Slide "Conclusão"</h2>
+            <ul>
+                <li>**Fonte: Artigo (p. 126, "Discussion" e p. 127, "Managerial implications"):** A conclusão é uma síntese das principais descobertas e discussões do artigo. A ideia do KAM como arquiteto, o processo sequencial e a importância do equilíbrio são os takeaways centrais propostos pelos autores.</li>
+                <li>**Fonte: Slides da Disciplina (Síntese das Aulas):** A conexão final com os conceitos-chave da disciplina, como "orquestração de ecossistema" (Aula 4), "equilíbrio" (Aula 1, Zona de Risco) e a importância da qualidade das interações (Aula 6, Mapeamento de Processos).</li>
+                <li>**Outras Fontes (Elaboração e Síntese):** A formulação da "Mensagem Final" para ser uma frase de efeito, que resume a principal contribuição teórica do artigo (a evolução do conceito de "touchpoint" para "crossing point") de uma maneira memorável e impactante.</li>
+            </ul>
+        </div>
+
+        <div class="slide qa-slide" id="slide10">
+            <h1><i class="fas fa-question-circle"></i> Perguntas e Respostas</h1>
+            <p>Espaço para interação com a audiência.</p>
+        </div>
+    </div>
+
+    <div class="nav-buttons">
+        <button class="nav-button" onclick="prevSlide()">Anterior</button>
+        <button class="nav-button" onclick="nextSlide()">Próximo</button>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlideIndex = 0;
+
+        function showSlide(index) {
+            // Esconde todos os slides
+            slides.forEach(slide => {
+                slide.style.display = 'none';
+            });
+
+            // Mostra o slide atual
+            if (slides[index]) {
+                slides[index].style.display = 'flex';
+                slides[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                currentSlideIndex = index;
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlideIndex < slides.length - 1) {
+                showSlide(currentSlideIndex + 1);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlideIndex > 0) {
+                showSlide(currentSlideIndex - 1);
+            }
+        }
+
+        // Inicializa mostrando apenas o primeiro slide
+        showSlide(0);
+
+        // Opcional: Adicionar navegação por teclado
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight') {
+                nextSlide();
+            } else if (event.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+    </script>
+
+</body>
+</html>
